@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TypingTest\\TypingTest\\TypingTest\\TypingTest.csproj": {}
+    "C:\\Development\\Lenka\\TypingTest\\TypingTest\\TypingTest.csproj": {}
   },
   "projects": {
-    "D:\\TypingTest\\TypingTest\\TypingTest\\TypingTest.csproj": {
+    "C:\\Development\\Lenka\\TypingTest\\TypingTest\\TypingTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TypingTest\\TypingTest\\TypingTest\\TypingTest.csproj",
+        "projectUniqueName": "C:\\Development\\Lenka\\TypingTest\\TypingTest\\TypingTest.csproj",
         "projectName": "TypingTest",
-        "projectPath": "D:\\TypingTest\\TypingTest\\TypingTest\\TypingTest.csproj",
+        "projectPath": "C:\\Development\\Lenka\\TypingTest\\TypingTest\\TypingTest.csproj",
         "packagesPath": "C:\\Users\\peskov.alexander\\.nuget\\packages\\",
-        "outputPath": "D:\\TypingTest\\TypingTest\\TypingTest\\obj\\",
+        "outputPath": "C:\\Development\\Lenka\\TypingTest\\TypingTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
