@@ -14,7 +14,6 @@ namespace TypingTest {
         public Form1() {
             InitializeComponent();
         }
-
         private void MinuteDecreasingButton_Click(object sender, EventArgs e) {
             var minuteCount = int.Parse(MinuteLabel.Text);
             if(minuteCount > 0) {
@@ -22,13 +21,11 @@ namespace TypingTest {
                 MinuteLabel.Text = minuteCount.ToString();
             }
         }
-
         private void MinuteIncreasingButton_Click(object sender, EventArgs e) {
             var minuteCount = int.Parse(MinuteLabel.Text);
             minuteCount++;
             MinuteLabel.Text = minuteCount.ToString();
         }
-
         private void SecondDecreasingButton_Click(object sender, EventArgs e) {
             var secondCount = int.Parse(SecondLabel.Text);
             if(secondCount > 0)
@@ -37,7 +34,6 @@ namespace TypingTest {
                 secondCount = 59;
             SecondLabel.Text = secondCount.ToString();
         }
-
         private void SecondIncreasingButton_Click(object sender, EventArgs e) {
             var secondCount = int.Parse(SecondLabel.Text);
             if(secondCount == 59)
@@ -47,7 +43,6 @@ namespace TypingTest {
             SecondLabel.Text = secondCount.ToString();
 
         }
-
         private void StartTestingButton_Click(object sender, EventArgs e) {
             SelectTabByName("TestTab");
             TestingInstance = new Testing(this);
@@ -59,15 +54,11 @@ namespace TypingTest {
             else
                 currentDifficulty = CurrentDifficulty.Hard;
             TestingInstance.Start(GetStartTimerValue(), currentDifficulty);
-
-            //start testing
         }
-
         private void StopTestingButton_Click(object sender, EventArgs e) {
             TestingInstance.Stop(true);
 
         }
-
         private void TestingAgainButton_Click(object sender, EventArgs e) {
             SelectTabByName("InitialTab");
             ClearTestingForm();
@@ -90,7 +81,6 @@ namespace TypingTest {
         public void SetRemainTimeLabelText( string text) {
             RemainTimeLabel.Text = text;
         }
-
         private void TestingPhraseTextBox_TextChanged(object sender, EventArgs e) {
             var textBox = (TextBox)sender;
             if(textBox.Text == " ") { 
@@ -119,7 +109,5 @@ namespace TypingTest {
             TestTimeLabel.Text = "00:00";
             MistakesCountLabel.Text = "0";
         }
-
-        
     }
 }
