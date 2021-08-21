@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 
 namespace TypingTest {
-    partial class Form1 {
+    partial class Form {
         /// <summary>
         ///  Required designer variable.
         /// </summary>

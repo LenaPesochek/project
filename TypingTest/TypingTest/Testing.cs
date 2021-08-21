@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,29 +11,31 @@ namespace TypingTest {
         int timerStartValue;
         string testPhrase;
         Timer timer = new Timer();
-        Form1 TestingForm { get; set;}
-        public Testing(Form1 form) {
+        public Testing(Form form) {
             TestingForm = form;
-            timer.Tick += new EventHandler(timer_Tick);
+            timer.Tick += new EventHandler(TimerTick);
             timer.Interval = 1000;
         }
-        public string TestPhrase { 
+        Form TestingForm { get; set; }
+        int MistakesCount { get; set; }
+        CurrentTestStatus TestStatus { get; set; }
+        CurrentDifficulty Difficulty { get; set; }
+        int MistakesPercent { get { return Convert.ToInt32((double)MistakesCount / GetSplitTestPhrase().Length * 100); } }
+        string TestPhrase { 
             get{
                 if(string.IsNullOrEmpty(testPhrase))
                     testPhrase = GetTestPhrase();
                 return testPhrase;
             }
         }
-        public string[] GetSplitTestPhrase() {
+        string[] GetSplitTestPhrase() {
             return TestPhrase.Split(" ");
         }
-        public CurrentTestStatus TestStatus { get; set;}
-        CurrentDifficulty Difficulty { get; set;}
-        void timer_Tick(object sender, EventArgs e) {
-            if (timerCurrentValue != 0) {
+        void TimerTick(object sender, EventArgs e) {
+            if(timerCurrentValue != 0) {
                 TestingForm.SetRemainTimeLabelText(GetRemainTime(timerCurrentValue));
                 timerCurrentValue--;
-            } else { 
+            } else {
                 TestStatus = CurrentTestStatus.TimeIsOver;
                 Stop(false);
             }
@@ -65,13 +65,12 @@ namespace TypingTest {
             timer.Stop();
             TestingForm.SelectTabByName("ResultTab");
             TestingForm.FillResultTab(GetStringTestStatus(), GetSpentTime(), MistakesCount, MistakesPercent);
-            }
+        }
         string GetSpentTime() {
             int spentTime = timerStartValue - timerCurrentValue;
             int minutes = (spentTime - spentTime % 60) / 60;
             int seconds = spentTime - minutes * 60;
             return string.Format("{0}:{1}", minutes.ToString("00"), seconds.ToString("00"));
-
         }
         public void CompareTestPhrase(string inputPhrase) {
             if(inputPhrase == "") {
@@ -92,9 +91,6 @@ namespace TypingTest {
                     mistakesCount++;
             }
             MistakesCount = mistakesCount;
-
-            MistakesPercent = Convert.ToInt32(((double)MistakesCount/testPhraseArray.Length)*100);
-            
         }
         string GetStringTestStatus() {
             switch(TestStatus) {
@@ -106,10 +102,6 @@ namespace TypingTest {
                     return "Test is stopped";
             }
         }
-        public int MistakesCount { get; set;}
-        public int MistakesPercent { get; set;}
-
-
     }
     public enum CurrentTestStatus {
         TestIsStopped = 0,

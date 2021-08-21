@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TypingTest {
-    public partial class Form1 : Form {
+    public partial class Form : System.Windows.Forms.Form {
         Testing TestingInstance { get; set;}
-        public Form1() {
+        public Form() {
             InitializeComponent();
         }
         private void MinuteDecreasingButton_Click(object sender, EventArgs e) {
