@@ -47,6 +47,8 @@ namespace TypingTest {
             this.StopTestingButton = new System.Windows.Forms.Button();
             this.RemainTimeLabel = new System.Windows.Forms.Label();
             this.ResultTab = new System.Windows.Forms.TabPage();
+            this.SpeedLabel = new System.Windows.Forms.Label();
+            this.SpeedCaptionLabel = new System.Windows.Forms.Label();
             this.FinishedTestLabel = new System.Windows.Forms.Label();
             this.MistakesCountLabel = new System.Windows.Forms.Label();
             this.MistakesCountCaptionLabel = new System.Windows.Forms.Label();
@@ -55,8 +57,6 @@ namespace TypingTest {
             this.TestResultLabel = new System.Windows.Forms.Label();
             this.TestResultCaptionLabel = new System.Windows.Forms.Label();
             this.TestingAgainButton = new System.Windows.Forms.Button();
-            this.SpeedCaptionLabel = new System.Windows.Forms.Label();
-            this.SpeedLabel = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.InitialTab.SuspendLayout();
             this.TestTab.SuspendLayout();
@@ -65,17 +65,17 @@ namespace TypingTest {
             // 
             // TabControl
             // 
+            this.TabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.TabControl.Controls.Add(this.InitialTab);
             this.TabControl.Controls.Add(this.TestTab);
             this.TabControl.Controls.Add(this.ResultTab);
+            this.TabControl.ItemSize = new System.Drawing.Size(0, 1);
             this.TabControl.Location = new System.Drawing.Point(2, 2);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(399, 273);
+            this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TabControl.TabIndex = 0;
-            this.TabControl.Appearance = TabAppearance.FlatButtons;
-            this.TabControl.ItemSize = new System.Drawing.Size(0, 1);
-            this.TabControl.SizeMode = TabSizeMode.Fixed;
             // 
             // InitialTab
             // 
@@ -92,10 +92,10 @@ namespace TypingTest {
             this.InitialTab.Controls.Add(this.SecondDecreasingButton);
             this.InitialTab.Controls.Add(this.MinuteIncreasingButton);
             this.InitialTab.Controls.Add(this.MinuteDecreasingButton);
-            this.InitialTab.Location = new System.Drawing.Point(4, 24);
+            this.InitialTab.Location = new System.Drawing.Point(4, 5);
             this.InitialTab.Name = "InitialTab";
             this.InitialTab.Padding = new System.Windows.Forms.Padding(3);
-            this.InitialTab.Size = new System.Drawing.Size(391, 245);
+            this.InitialTab.Size = new System.Drawing.Size(391, 264);
             this.InitialTab.TabIndex = 0;
             this.InitialTab.Text = "Initial";
             this.InitialTab.UseVisualStyleBackColor = true;
@@ -242,10 +242,10 @@ namespace TypingTest {
             this.TestTab.Controls.Add(this.TestingPhraseLabel);
             this.TestTab.Controls.Add(this.StopTestingButton);
             this.TestTab.Controls.Add(this.RemainTimeLabel);
-            this.TestTab.Location = new System.Drawing.Point(4, 24);
+            this.TestTab.Location = new System.Drawing.Point(4, 5);
             this.TestTab.Name = "TestTab";
             this.TestTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TestTab.Size = new System.Drawing.Size(391, 245);
+            this.TestTab.Size = new System.Drawing.Size(391, 264);
             this.TestTab.TabIndex = 1;
             this.TestTab.Text = "Testing";
             this.TestTab.UseVisualStyleBackColor = true;
@@ -303,13 +303,33 @@ namespace TypingTest {
             this.ResultTab.Controls.Add(this.TestResultLabel);
             this.ResultTab.Controls.Add(this.TestResultCaptionLabel);
             this.ResultTab.Controls.Add(this.TestingAgainButton);
-            this.ResultTab.Location = new System.Drawing.Point(4, 24);
+            this.ResultTab.Location = new System.Drawing.Point(4, 5);
             this.ResultTab.Name = "ResultTab";
             this.ResultTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ResultTab.Size = new System.Drawing.Size(391, 245);
+            this.ResultTab.Size = new System.Drawing.Size(391, 264);
             this.ResultTab.TabIndex = 2;
             this.ResultTab.Text = "Result";
             this.ResultTab.UseVisualStyleBackColor = true;
+            // 
+            // SpeedLabel
+            // 
+            this.SpeedLabel.AutoSize = true;
+            this.SpeedLabel.Font = new System.Drawing.Font("Comic Sans MS", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SpeedLabel.Location = new System.Drawing.Point(194, 127);
+            this.SpeedLabel.Name = "SpeedLabel";
+            this.SpeedLabel.Size = new System.Drawing.Size(18, 20);
+            this.SpeedLabel.TabIndex = 9;
+            this.SpeedLabel.Text = "0";
+            // 
+            // SpeedCaptionLabel
+            // 
+            this.SpeedCaptionLabel.AutoSize = true;
+            this.SpeedCaptionLabel.Font = new System.Drawing.Font("Comic Sans MS", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.SpeedCaptionLabel.Location = new System.Drawing.Point(44, 127);
+            this.SpeedCaptionLabel.Name = "SpeedCaptionLabel";
+            this.SpeedCaptionLabel.Size = new System.Drawing.Size(134, 20);
+            this.SpeedCaptionLabel.TabIndex = 8;
+            this.SpeedCaptionLabel.Text = "Speed (word/min)";
             // 
             // FinishedTestLabel
             // 
@@ -392,26 +412,6 @@ namespace TypingTest {
             this.TestingAgainButton.UseVisualStyleBackColor = true;
             this.TestingAgainButton.Click += new System.EventHandler(this.TestingAgainButton_Click);
             // 
-            // SpeedCaptionLabel
-            // 
-            this.SpeedCaptionLabel.AutoSize = true;
-            this.SpeedCaptionLabel.Font = new System.Drawing.Font("Comic Sans MS", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.SpeedCaptionLabel.Location = new System.Drawing.Point(44, 127);
-            this.SpeedCaptionLabel.Name = "SpeedCaptionLabel";
-            this.SpeedCaptionLabel.Size = new System.Drawing.Size(134, 20);
-            this.SpeedCaptionLabel.TabIndex = 8;
-            this.SpeedCaptionLabel.Text = "Speed (word/min)";
-            // 
-            // SpeedLabel
-            // 
-            this.SpeedLabel.AutoSize = true;
-            this.SpeedLabel.Font = new System.Drawing.Font("Comic Sans MS", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SpeedLabel.Location = new System.Drawing.Point(194, 127);
-            this.SpeedLabel.Name = "SpeedLabel";
-            this.SpeedLabel.Size = new System.Drawing.Size(18, 20);
-            this.SpeedLabel.TabIndex = 9;
-            this.SpeedLabel.Text = "0";
-            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -419,7 +419,7 @@ namespace TypingTest {
             this.ClientSize = new System.Drawing.Size(413, 275);
             this.Controls.Add(this.TabControl);
             this.Name = "Form";
-            this.Text = "Form1";
+            this.Text = "Typing Test";
             this.TabControl.ResumeLayout(false);
             this.InitialTab.ResumeLayout(false);
             this.InitialTab.PerformLayout();
