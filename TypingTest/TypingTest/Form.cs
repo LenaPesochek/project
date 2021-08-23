@@ -69,9 +69,10 @@ namespace TypingTest {
         public void SelectTabByName(string name) {
             TabControl.SelectTab(name);
         }
-        public void FillResultTab(string testStatus, string testTime, int mistakes, int mistakesPercent) {
+        public void FillResultTab(string testStatus, string testTime, string speed, int mistakes, int mistakesPercent) {
             TestResultLabel.Text = testStatus;
             TestTimeLabel.Text = testTime;
+            SpeedLabel.Text = speed;
             MistakesCountLabel.Text = string.Format("{0} ({1}%)", mistakes, mistakesPercent);
 
         }

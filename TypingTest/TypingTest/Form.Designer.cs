@@ -55,6 +55,8 @@ namespace TypingTest {
             this.TestResultLabel = new System.Windows.Forms.Label();
             this.TestResultCaptionLabel = new System.Windows.Forms.Label();
             this.TestingAgainButton = new System.Windows.Forms.Button();
+            this.SpeedCaptionLabel = new System.Windows.Forms.Label();
+            this.SpeedLabel = new System.Windows.Forms.Label();
             this.TabControl.SuspendLayout();
             this.InitialTab.SuspendLayout();
             this.TestTab.SuspendLayout();
@@ -71,6 +73,9 @@ namespace TypingTest {
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(399, 273);
             this.TabControl.TabIndex = 0;
+            this.TabControl.Appearance = TabAppearance.FlatButtons;
+            this.TabControl.ItemSize = new System.Drawing.Size(0, 1);
+            this.TabControl.SizeMode = TabSizeMode.Fixed;
             // 
             // InitialTab
             // 
@@ -288,6 +293,8 @@ namespace TypingTest {
             // 
             // ResultTab
             // 
+            this.ResultTab.Controls.Add(this.SpeedLabel);
+            this.ResultTab.Controls.Add(this.SpeedCaptionLabel);
             this.ResultTab.Controls.Add(this.FinishedTestLabel);
             this.ResultTab.Controls.Add(this.MistakesCountLabel);
             this.ResultTab.Controls.Add(this.MistakesCountCaptionLabel);
@@ -318,21 +325,21 @@ namespace TypingTest {
             // 
             this.MistakesCountLabel.AutoSize = true;
             this.MistakesCountLabel.Font = new System.Drawing.Font("Comic Sans MS", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MistakesCountLabel.Location = new System.Drawing.Point(194, 119);
+            this.MistakesCountLabel.Location = new System.Drawing.Point(194, 160);
             this.MistakesCountLabel.Name = "MistakesCountLabel";
-            this.MistakesCountLabel.Size = new System.Drawing.Size(18, 20);
+            this.MistakesCountLabel.Size = new System.Drawing.Size(51, 20);
             this.MistakesCountLabel.TabIndex = 6;
-            this.MistakesCountLabel.Text = "0";
+            this.MistakesCountLabel.Text = "0(0%)";
             // 
             // MistakesCountCaptionLabel
             // 
             this.MistakesCountCaptionLabel.AutoSize = true;
             this.MistakesCountCaptionLabel.Font = new System.Drawing.Font("Comic Sans MS", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.MistakesCountCaptionLabel.Location = new System.Drawing.Point(106, 119);
+            this.MistakesCountCaptionLabel.Location = new System.Drawing.Point(78, 160);
             this.MistakesCountCaptionLabel.Name = "MistakesCountCaptionLabel";
-            this.MistakesCountCaptionLabel.Size = new System.Drawing.Size(72, 20);
+            this.MistakesCountCaptionLabel.Size = new System.Drawing.Size(100, 20);
             this.MistakesCountCaptionLabel.TabIndex = 5;
-            this.MistakesCountCaptionLabel.Text = "Mistakes";
+            this.MistakesCountCaptionLabel.Text = "Mistakes (%)";
             // 
             // TestTimeLabel
             // 
@@ -385,13 +392,33 @@ namespace TypingTest {
             this.TestingAgainButton.UseVisualStyleBackColor = true;
             this.TestingAgainButton.Click += new System.EventHandler(this.TestingAgainButton_Click);
             // 
-            // Form1
+            // SpeedCaptionLabel
+            // 
+            this.SpeedCaptionLabel.AutoSize = true;
+            this.SpeedCaptionLabel.Font = new System.Drawing.Font("Comic Sans MS", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.SpeedCaptionLabel.Location = new System.Drawing.Point(44, 127);
+            this.SpeedCaptionLabel.Name = "SpeedCaptionLabel";
+            this.SpeedCaptionLabel.Size = new System.Drawing.Size(134, 20);
+            this.SpeedCaptionLabel.TabIndex = 8;
+            this.SpeedCaptionLabel.Text = "Speed (word/min)";
+            // 
+            // SpeedLabel
+            // 
+            this.SpeedLabel.AutoSize = true;
+            this.SpeedLabel.Font = new System.Drawing.Font("Comic Sans MS", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SpeedLabel.Location = new System.Drawing.Point(194, 127);
+            this.SpeedLabel.Name = "SpeedLabel";
+            this.SpeedLabel.Size = new System.Drawing.Size(18, 20);
+            this.SpeedLabel.TabIndex = 9;
+            this.SpeedLabel.Text = "0";
+            // 
+            // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 275);
             this.Controls.Add(this.TabControl);
-            this.Name = "Form1";
+            this.Name = "Form";
             this.Text = "Form1";
             this.TabControl.ResumeLayout(false);
             this.InitialTab.ResumeLayout(false);
@@ -435,6 +462,8 @@ namespace TypingTest {
         private System.Windows.Forms.Button TestingAgainButton;
         private Label SecondCaptionLabel;
         private Label MinuteCaptionLabel;
+        private Label SpeedLabel;
+        private Label SpeedCaptionLabel;
     }
 }
 

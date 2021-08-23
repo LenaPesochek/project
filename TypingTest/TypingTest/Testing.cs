@@ -18,6 +18,7 @@ namespace TypingTest {
         }
         Form TestingForm { get; set; }
         int MistakesCount { get; set; }
+        int CorrectWordsCount { get; set;}
         CurrentTestStatus TestStatus { get; set; }
         CurrentDifficulty Difficulty { get; set; }
         int MistakesPercent { get { return Convert.ToInt32((double)MistakesCount / GetSplitTestPhrase().Length * 100); } }
@@ -64,7 +65,7 @@ namespace TypingTest {
                 TestStatus = CurrentTestStatus.TestIsStopped;
             timer.Stop();
             TestingForm.SelectTabByName("ResultTab");
-            TestingForm.FillResultTab(GetStringTestStatus(), GetSpentTime(), MistakesCount, MistakesPercent);
+            TestingForm.FillResultTab(GetStringTestStatus(), GetSpentTime(), GetSpeed(), MistakesCount, MistakesPercent);
         }
         string GetSpentTime() {
             int spentTime = timerStartValue - timerCurrentValue;
@@ -72,18 +73,25 @@ namespace TypingTest {
             int seconds = spentTime - minutes * 60;
             return string.Format("{0}:{1}", minutes.ToString("00"), seconds.ToString("00"));
         }
+
+        string GetSpeed() {
+            int spentTime = timerStartValue - timerCurrentValue;
+            return String.Format("{0:0.0}", ((double)CorrectWordsCount/spentTime*60));
+        }
         public void CompareTestPhrase(string inputPhrase) {
             if(inputPhrase == "") {
                 MistakesCount = 0;
+                CorrectWordsCount = 0;
                 return;
             }
+            var inputPhraseArray = inputPhrase.Split(" ");
             if(inputPhrase == TestPhrase) { 
                 MistakesCount = 0;
+                CorrectWordsCount = inputPhraseArray.Length;
                 TestStatus = CurrentTestStatus.TestIsFinished;
                 Stop(false);
                 return;
             }
-            var inputPhraseArray = inputPhrase.Split(" ");
             var testPhraseArray = GetSplitTestPhrase();
             var mistakesCount = 0;
             for(var i=0; i<inputPhraseArray.Length; i++) {
@@ -91,6 +99,7 @@ namespace TypingTest {
                     mistakesCount++;
             }
             MistakesCount = mistakesCount;
+            CorrectWordsCount = inputPhraseArray.Length - MistakesCount;
         }
         string GetStringTestStatus() {
             switch(TestStatus) {
