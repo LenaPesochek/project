@@ -21,7 +21,7 @@ namespace TypingTest {
         int CorrectWordsCount { get; set;}
         CurrentTestStatus TestStatus { get; set; }
         CurrentDifficulty Difficulty { get; set; }
-        int MistakesPercent { get { return Convert.ToInt32((double)MistakesCount / GetSplitTestPhrase().Length * 100); } }
+        int MistakesPercent { get { return Convert.ToInt32((double)MistakesCount / GetSplitInputPhrase().Length * 100); } }
         string TestPhrase { 
             get{
                 if(string.IsNullOrEmpty(testPhrase))
@@ -29,8 +29,12 @@ namespace TypingTest {
                 return testPhrase;
             }
         }
+        string InputPhrase{ get; set; }
         string[] GetSplitTestPhrase() {
             return TestPhrase.Split(" ");
+        }
+        string[] GetSplitInputPhrase() {
+            return InputPhrase.Split(" ");
         }
         void TimerTick(object sender, EventArgs e) {
             if(timerCurrentValue != 0) {
@@ -79,13 +83,14 @@ namespace TypingTest {
             return String.Format("{0:0.0}", ((double)CorrectWordsCount/spentTime*60));
         }
         public void CompareTestPhrase(string inputPhrase) {
-            if(inputPhrase == "") {
+            InputPhrase = inputPhrase;
+            if(InputPhrase == "") {
                 MistakesCount = 0;
                 CorrectWordsCount = 0;
                 return;
             }
-            var inputPhraseArray = inputPhrase.Split(" ");
-            if(inputPhrase == TestPhrase) { 
+            var inputPhraseArray = GetSplitInputPhrase();
+            if(InputPhrase == TestPhrase) { 
                 MistakesCount = 0;
                 CorrectWordsCount = inputPhraseArray.Length;
                 TestStatus = CurrentTestStatus.TestIsFinished;
